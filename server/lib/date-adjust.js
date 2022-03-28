@@ -20,3 +20,4 @@ module.exports = () => {
   // Re-write the tweets with the new date values.
   fs.writeFileSync('server/data-files/initial-tweets.json', JSON.stringify(tweetsJSON, null, 2), { encoding: "utf8" });
 };
+ 

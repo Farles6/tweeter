@@ -19,7 +19,7 @@ module.exports = {
       prefix = prefix.replace(".", "");
       userHandle += prefix
     }
-
+ 
     userHandle += lastName;
 
     if (Math.random() > 0.5) {
