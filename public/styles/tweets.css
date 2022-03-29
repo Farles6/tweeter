@@ -1,3 +1,51 @@
-.tweet-container {
+.tweets {
+  display: flex;
+  border: 3px solid black;
   width: 100%;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.tweets-header {
+ display: flex;
+  font-style: 'Source Sans Pro', sans-serif;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.username{
+  color: #4057a166;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweets:hover {
+  box-shadow: 8px 8px 2px #c8c8c8;
+}
+
+article {
+  width: 100%;
+}
+
+.fa-solid.fa-user-astronaut {
+  margin-right: 10px;
+  font-style: 'Source Sans Pro', sans-serif;
+}
+
+.tweets-footer {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 3px solid black;
+  width: 100%;
+}
+.tweets-footer i {
+  font-size: 12px;
+  color: #4056A1;
+}
+.tweets-footer i:hover {
+color: #c79500;
 }
