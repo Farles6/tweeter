@@ -2,6 +2,11 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
+}
+
+section > h2 {
+margin-bottom: 0px;
 }
 
 textarea {
@@ -33,3 +38,8 @@ div {
  justify-content: space-between;
  font-family: 'Bungee', cursive;
 }
+
+.overTotal {
+  color: #FF0000;
+}
+
