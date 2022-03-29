@@ -43,3 +43,8 @@ form {
   color: #FF0000;
 }
 
+
+/* set to be able to scoll page and test fixed nav bar */
+main {
+  height: 1000px
+}
