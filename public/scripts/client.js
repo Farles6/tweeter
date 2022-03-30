@@ -50,31 +50,40 @@ const renderTweets = (data) => {
 
 
 $(function() {
- 
+  $('.error-text').hide()
+  
   const loadTweets = () => {
     $.get('/tweets', {method: 'Get'})
     .then(function(tweets){
       renderTweets(tweets);
     })
   };
-
+  
   loadTweets();
   
   $('.tweet-form').on('submit', function(event) {
     event.preventDefault();
     const tweetText = $(this).children('#tweet-text').val();
     
+    $('.error-text').slideUp();
+
     if (tweetText === ''){
-      return alert('Need to enter some text before submitting.');
+      $('.error-text').html('⚠️ Need to enter some text before submitting. ⚠️')
+      $('.error-text').slideDown()
+      return;
     } 
     else if (tweetText.length > 140){
-      return alert('Tweet must be less than 140 characters.');
+      $('.error-text').html('⚠️ Tweet must be less than 140 characters. ⚠️');
+      $('.error-text').slideDown();
+      return;
     }
     const tweetString = $(this).serialize();
     
     $.post('/tweets', tweetString)
     .done(function() {
-      console.log('Success', tweetString); 
+      console.log('Success', tweetString)
+      $('#tweet-text').val('');
+      $('.counter').text(140);
       loadTweets();
     })
     
