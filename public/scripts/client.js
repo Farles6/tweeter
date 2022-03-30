@@ -6,33 +6,10 @@
 
 // Test / driver code (temporary). Eventually will get this from the server.
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
 
 const createTweetElement = (tweetData) => {
+  let timeCreated = tweetData.created_at
+  let time = timeago.format(timeCreated)
   let tweet = `
   <article class="tweet">
         <header class="tweets-header">
@@ -47,7 +24,7 @@ const createTweetElement = (tweetData) => {
         <p class="text">
         ${tweetData.content.text}</p>
         <footer class="tweets-footer">
-          ${tweetData.created_at}
+          ${time}
           <div>
             <i class="fa-solid fa-flag"></i>
             <i class="fa-solid fa-retweet"></i>
@@ -55,21 +32,37 @@ const createTweetElement = (tweetData) => {
           </div>
         </footer>
       </article>`
-  $('.tweets-container').append(tweet);
+  $('.tweets-container').prepend(tweet);
 };
 
 const renderTweets = (data) => {
-  for (let tweets of data){
+  for (let tweets of data) {
     createTweetElement(tweets)
   }
 };
 
 
-$(() => {
-  $('.tweets-container').on('submit', (event) => {
+$(function() {
+  const loadTweets = () => {
+    $.get('/tweets', {method: 'Get'})
+    .then(function(tweets){
+      renderTweets(tweets);
+    })
+  };
+  
+  loadTweets()
+  
+  $('.tweet-form').on('submit', function(event) {
     event.preventDefault();
+    
+    const tweetString = $(this).serialize();
+
+    $.post('/tweets', tweetString)
+      .done(function() {
+        tweetString
+      })
   });
-  
-  
-  renderTweets(data);
+
+
+
 });
