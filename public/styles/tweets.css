@@ -1,9 +1,7 @@
-.tweets {
-  display: flex;
-  border: 3px solid black;
+.tweets-container {
+  /* display: flex; */
   width: 100%;
   margin-top: 30px;
-  padding: 10px;
 }
 
 .tweets-header {
@@ -11,6 +9,14 @@
   font-style: 'Source Sans Pro', sans-serif;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
+}
+
+.tweet {
+  width: 100%;
+  border: 3px solid black;
+padding: 15px;
+margin: 24px 0px;
 }
 
 .username{
@@ -20,19 +26,19 @@
 .name {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.tweets:hover {
+.tweet:hover {
   box-shadow: 8px 8px 2px #c8c8c8;
 }
 
-article {
-  width: 100%;
-}
 
-.fa-solid.fa-user-astronaut {
+.tweet img {
   margin-right: 10px;
   font-style: 'Source Sans Pro', sans-serif;
+  width: 40px;
+  height: 40px;
 }
 
 .tweets-footer {
