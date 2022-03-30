@@ -6,10 +6,16 @@
 
 // Test / driver code (temporary). Eventually will get this from the server.
 
+const escape = (str) => {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 const createTweetElement = (tweetData) => {
-  let timeCreated = tweetData.created_at
-  let time = timeago.format(timeCreated)
+  const safeHTML = escape(tweetData.content.text);
+  let timeCreated = tweetData.created_at;
+  let time = timeago.format(timeCreated);
   let tweet = `
   <article class="tweet">
         <header class="tweets-header">
@@ -22,7 +28,7 @@ const createTweetElement = (tweetData) => {
           </div>
         </header>
         <p class="text">
-        ${tweetData.content.text}</p>
+        ${safeHTML}</p>
         <footer class="tweets-footer">
           ${time}
           <div>
@@ -31,38 +37,52 @@ const createTweetElement = (tweetData) => {
             <i class="fa-solid fa-heart"></i>
           </div>
         </footer>
-      </article>`
+      </article>`;
   $('.tweets-container').prepend(tweet);
 };
 
 const renderTweets = (data) => {
   for (let tweets of data) {
-    createTweetElement(tweets)
+    createTweetElement(tweets);
   }
 };
 
 
+
 $(function() {
+ 
   const loadTweets = () => {
     $.get('/tweets', {method: 'Get'})
     .then(function(tweets){
       renderTweets(tweets);
     })
   };
-  
-  loadTweets()
+
+  loadTweets();
   
   $('.tweet-form').on('submit', function(event) {
     event.preventDefault();
+    const tweetText = $(this).children('#tweet-text').val();
     
+    if (tweetText === ''){
+      return alert('Need to enter some text before submitting.');
+    } 
+    else if (tweetText.length > 140){
+      return alert('Tweet must be less than 140 characters.');
+    }
     const tweetString = $(this).serialize();
-
+    
     $.post('/tweets', tweetString)
-      .done(function() {
-        tweetString
-      })
+    .done(function() {
+      console.log('Success', tweetString); 
+      loadTweets();
+    })
+    
   });
 
 
+  
+ 
+  
 
 });

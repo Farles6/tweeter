@@ -6,7 +6,7 @@ $(document).ready(function() {
     const counter = $('.counter');
     
     counter.html(totalRemaining);
-
+    
     if (totalRemaining < 0) {
       if (!counter.hasClass('overTotal')) {
         counter.addClass('overTotal')
