@@ -1,11 +1,9 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
-// Test / driver code (temporary). Eventually will get this from the server.
+//Runs after the page is loaded
+$(function() {
 
+
+//Prevents people from submitting malicious tweets
 const escape = (str) => {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
@@ -56,9 +54,8 @@ const renderTweets = (data) => {
 };
 
 
-//Runs after the page is loaded
-$(function() {
-  
+
+
   $('.error-text').hide();
 
   /**
@@ -107,7 +104,7 @@ $(function() {
   //hides/shows compose tweet section when clicked
   $('.newTweet').click(() => {
     $('.new-tweet').slideToggle('100', () => {
-    $('#tweet-text').focus()
+      $('#tweet-text').focus();
     })
   });
 
