@@ -1,11 +1,10 @@
 .tweets-container {
-  /* display: flex; */
   width: 100%;
   margin-top: 30px;
 }
 
 .tweets-header {
- display: flex;
+  display: flex;
   font-style: 'Source Sans Pro', sans-serif;
   width: 100%;
   justify-content: space-between;
@@ -15,15 +14,13 @@
 .tweet {
   width: 100%;
   border: 3px solid black;
-padding: 15px;
-margin: 24px 0px;
+  padding: 15px;
+  margin: 24px 0px;
 }
 
-/* p.text {
-display: flex;
-flex-wrap: wrap;
-width: 100%;
-} */
+p.text {
+  word-wrap: break-word;
+}
 
 .username{
   color: #4057a166;
@@ -60,5 +57,5 @@ width: 100%;
   color: #4056A1;
 }
 .tweets-footer i:hover {
-color: #c79500;
+  color: #c79500;
 }

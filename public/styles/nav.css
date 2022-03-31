@@ -14,7 +14,7 @@ nav {
 }
 
 .newTweet {
- display: flex;
+  display: flex;
   justify-content: flex-end;
   flex-direction: column;
   align-items: flex-end;
@@ -27,10 +27,45 @@ nav {
 
 .arrow {
   align-self: center;
-  color: red
+  color: red;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
 }
 
 nav span {
   font-family: 'Bungee', cursive;
   font-size: 36px;
+}
+
+.newTweet:hover {
+  cursor: pointer;
+}
+
+.arrow:hover {
+  animation-name: bounce;
+  -moz-animation-name: bounce;
+}
+
+@keyframes bounce {
+	0%, 100%, 20%, 50%, 80% {
+		-webkit-transform: translateY(0);
+		-ms-transform:     translateY(0);
+		transform:         translateY(0)
+	}
+	40% {
+		-webkit-transform: translateY(10px);
+		-ms-transform:     translateY(10px);
+		transform:         translateY(10px)
+	}
+	60% {
+		-webkit-transform: translateY(7px);
+		transform:         translateY(7px);
+		-ms-transform:     translateY(7px);
+	}
 }
