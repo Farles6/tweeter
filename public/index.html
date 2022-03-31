@@ -39,13 +39,14 @@
 
 <body>
   <!-- Top nav bar (fixed) -->
-  <nav>
+  <nav class="top">
     <span class="title">Tweeter</span>
     <div class="newTweet">
       <p><strong>Write</strong> a new tweet</p>
       <div class="arrow"><i class="fa-solid fa-angles-down"></i></div>
     </div>
   </nav>
+ <div class="header--tweets">
   <header class="main-header">
     <div>
       <img src="/images/profile-hex.png">
@@ -56,13 +57,14 @@
     </div>
   </header>
   <!-- Page-specific (main) content here -->
+ <div class="tweets--container">
   <main class="container">
     <section class="new-tweet">
       <h4 class="error-text"></h4>
       <h2>Compose Tweet</h2>
       <form class='tweet-form' action="/tweets" method="POST">
         <label for="tweet-text"></label>
-        <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+        <textarea name="text" autofocus id="tweet-text" placeholder="What are you humming about?"></textarea>
         <div>
           <button type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
@@ -71,6 +73,8 @@
     </section>
     <section class="tweets-container">
     </section>
+  </div>
+  </div>
   </main>
 </body>
 

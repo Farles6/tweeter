@@ -86,7 +86,7 @@ $(function() {
       return;
     }
     else if (tweetText.length > 140) {
-      $('.error-text').html('⚠️ Tweet must be less than 140 characters. ⚠️');
+      $('.error-text').html('⚠️ Tweet must be 140 characters or less. ⚠️');
       $('.error-text').slideDown();
       return;
     }
@@ -107,6 +107,7 @@ $(function() {
   //hides/shows compose tweet section when clicked
   $('.newTweet').click(() => {
     $('.new-tweet').slideToggle('100', () => {
+    $('#tweet-text').focus()
     })
   });
 

@@ -12,3 +12,28 @@
 .user h2 {
   margin: 5px;
 }
+
+@media only screen and (min-width: 1024px){
+  .header--tweets {
+    display: flex;
+    justify-content: space-around;
+  }
+  .tweets--container {
+    margin-top: 162px;
+    word-wrap: break-word;
+    width: 50%;
+  }
+  .main-header {
+    margin-top: 200px;
+    margin-left: 3%;
+    margin-right: 5%;
+    width: 14em;
+    position: sticky;
+    top: 130px;
+    height: 14em;
+  }
+  .main-header img {
+    height: 9em;
+    width: 9em;
+  }
+}
